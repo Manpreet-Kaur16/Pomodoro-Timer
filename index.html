@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PpomodoroTimer</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-slate-100">
+    <div class="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+      <div
+        class="bg-white shadow-xl rounded-xl p-10 w-full max-w-lg text-center"
+      >
+        <h1 class="text-3xl font-bold text-gray-900 mb-8">Pomodoro Timer</h1>
+
+        <div class="justify-center gap-2 mt-4 w-full flex">
+          <button
+            class="border rounded px-4 py-2 text-white bg-black"
+            id="focusButton"
+          >
+            Focus
+          </button>
+          <button
+            class="border rounded px-4 py-2 text-black bg-white"
+            id="breakButton"
+          >
+            Break
+          </button>
+        </div>
+        <div class="flex w-full justify-center text-6xl font-bold mt-6 mb-6">
+          <h1 id="mintues">30</h1>
+          <h1>:</h1>
+          <h1>00</h1>
+        </div>
+        <div class="flex justify-evenly">
+          <div class="font-bold">
+            <h4 class="mb-2">Focus-Time</h4>
+            <div class="flex w-full gap-2">
+              <button
+                class="border rounded text-black px-2 py-1"
+                id="focusDecrement"
+              >
+                -
+              </button>
+              <h4 id="focusTime">30m</h4>
+              <button
+                class="border rounded px-2 py-1 text-black"
+                id="focusIncrement"
+              >
+                +
+              </button>
+            </div>
+          </div>
+          <div class="font-bold">
+            <h4 class="mb-2">Break-Time</h4>
+            <div class="flex w-full gap-2">
+              <button
+                class="border rounded text-black px-2 py-1"
+                id="breakDecrement"
+              >
+                -
+              </button>
+              <h4 id="breakTime">5m</h4>
+              <button
+                class="border rounded px-2 py-1 text-black"
+                id="breakIncrement"
+              >
+                +
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="justify-center gap-8 mt-4 w-full flex mb-10">
+          <button
+            class="border rounded px-10 py-2 text-white bg-black"
+            id="startButton"
+          >
+            Start
+          </button>
+          <button
+            class="border rounded px-10 py-2 text-black bg-white"
+            id="resetButton"
+          >
+            Reset
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+    <!-- <script src="timer.js"></script> -->
+  </body>
+</html>
