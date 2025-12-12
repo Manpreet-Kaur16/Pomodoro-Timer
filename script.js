@@ -16,16 +16,18 @@ let currentTime = 30;
 let focusTime = 30;
 let breakTime = 5;
 let timer;
+let timeLeftGlobal = null;
 function displayTimer(formattedMinutes, formattedSeconds) {
   mintuesElement.innerText = formattedMinutes;
   secondsElement.innerText = formattedSeconds;
 }
 function startTimer(timeLeft) {
   console.log(`Starting timer, ${timeLeft}, seconds`);
-  //console.log("hello start timer is here!!");
+
   timer = setInterval(() => {
     if (timeLeft > 0) {
       timeLeft--;
+      timeLeftGlobal = timeLeft;
       const minutes = Math.floor(timeLeft / 60);
       const seconds = timeLeft % 60;
 
@@ -128,14 +130,17 @@ breakIncrementElement.addEventListener("click", () => {
 resetButtonElement.addEventListener("click", () => {
   resetButtonElement.classList.add("bg-black", "text-white");
   resetButtonElement.classList.remove("bg-white", "text-black");
+  timeLeftGlobal = null;
   if (currentMode == "focus") {
     currentTime = 30;
+    focusTime = 30;
     mintuesElement.innerText = currentTime;
     secondsElement.innerText = "00";
     focusTimeElement.innerText = currentTime + "m";
   }
   if (currentMode == "break") {
     currentTime = 5;
+    breakTime = 5;
     mintuesElement.innerText = currentTime;
     secondsElement.innerText = "00";
     breakTimeElement.innerText = currentTime + "m";
@@ -152,7 +157,11 @@ startButtonElement.addEventListener("click", () => {
   }
 
   if (startButtonElement.innerText == "Start") {
-    startTimer(timeInSeconds);
+    if (timeLeftGlobal) {
+      startTimer(timeLeftGlobal);
+    } else {
+      startTimer(timeInSeconds);
+    }
     startButtonElement.innerText = "Stop";
   } else {
     startButtonElement.innerText = "Start";
